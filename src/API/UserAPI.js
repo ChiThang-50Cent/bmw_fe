@@ -1,81 +1,118 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import Swal from "sweetalert2"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export default function UserAPI(token) {
-    const [isLogged, setIsLogged] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [cart, setCart] = useState([])
-    const [history, setHistory] = useState([])
-    const [callback, setCallback] = useState(false)
-    const [infor, setInfor] = useState([])
-
+    const [isLogged, setIsLogged] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [cart, setCart] = useState([]);
+    const [history, setHistory] = useState([]);
+    const [callback, setCallback] = useState(false);
+    const [infor, setInfor] = useState([]);
 
     useEffect(() => {
-        if(token) {
+        if (token) {
             const getUser = async() => {
                 try {
                     const response = await axios.get(`http://localhost:5000/user/infor`, {
-                        headers: {Authorization: token}
-                    })
-                    setIsLogged(true)
-                    response.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
-                    setCart(response.data.cart)
-                    setInfor([response.data.name, response.data.mobile, response.data.address])
-                } catch(err) {
-                    Swal.fire("Error", err.response.data.msg, "error")
+                        headers: { Authorization: token },
+                    });
+                    setIsLogged(true);
+                    response.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+                    setCart(response.data.cart);
+                    setInfor([
+                        response.data.name,
+                        response.data.mobile,
+                        response.data.address,
+                    ]);
+                } catch (err) {
+                    Swal.fire("Error", err.response.data.msg, "error");
                 }
-            }
-            getUser()
+            };
+            getUser();
         }
-    }, [token]) 
+    }, [token]);
 
     useEffect(() => {
-        if(token) {
+        if (token) {
             const getHistory = async() => {
-                if(isAdmin) {
-                    const response = await axios.get(`http://localhost:5000/api/payment`, {
-                        headers: {Authorization: token}
-                    })
-                    setHistory(response.data)
+                if (isAdmin) {
+                    const response = await axios.get(
+                        `http://localhost:5000/api/payment`, {
+                            headers: { Authorization: token },
+                        }
+                    );
+                    setHistory(response.data);
+                } else {
+                    const response = await axios.get(
+                        `http://localhost:5000/user/history`, {
+                            headers: { Authorization: token },
+                        }
+                    );
+                    setHistory(response.data);
                 }
-                else {
-                    const response  = await axios.get(`http://localhost:5000/user/history`, {
-                        headers: {Authorization: token}
-                    })
-                    setHistory(response.data)
-                }
-            }
-            getHistory()
+            };
+            getHistory();
         }
-    }, [token, isAdmin])
+    }, [token, isAdmin]);
 
-    const addCart = async (product) => {
-        if(!isLogged) {
-            Swal.fire("Fail!", "Please login to be able to shop", "error")
+    const addCart = async(product) => {
+        if (!isLogged) {
+            Swal.fire("Fail!", "Please login to be able to shop", "error");
         }
 
-        const check = cart.every((item) =>  {
-            return item._id !== product._id
-        })
+        const check = cart.every((item) => {
+            return item._id !== product._id;
+        });
         if (check) {
-            setCart([...cart, {...product, quantity: 1}])
-            await axios.patch('http://localhost:5000/user/addcart', {cart: [...cart, {...product, quantity: 1}]}, {
-              headers: {Authorization: token}
-            })
-            Swal.fire("Thank you!", "This product has been added to cart!", "success");
-          } else {
+            setCart([...cart, {...product, quantity: 1 }]);
+            await axios.patch(
+                "http://localhost:5000/user/addcart", { cart: [...cart, {...product, quantity: 1 }] }, {
+                    headers: { Authorization: token },
+                }
+            );
+            Swal.fire(
+                "Thank you!",
+                "This product has been added to cart!",
+                "success"
+            );
+        } else {
             Swal.fire("Thank you!", "This product is already in your cart!", "info");
-          }
-    }
+        }
+    };
+
+    const updateInfo = async(data) => {
+        const { name, phone, address } = data;
+        if (!isLogged) {
+            Swal.fire("Fail!", "Please login to be able to shop", "error");
+        }
+        setInfor([name, phone, address]);
+        try {
+            const doc = await axios.post(
+                "http://localhost:5000/user/update", {...data }, {
+                    headers: { Authorization: token },
+                }
+            );
+            console.log(doc);
+            Swal.fire("Thank you!", "Update infor success!", "success");
+        } catch (err) {
+            Swal.fire({
+                title: "Error",
+                text: err.response.data.msg,
+                icon: "error",
+                button: "OK",
+            });
+        }
+    };
 
     return {
+        updateInfo: updateInfo,
         addCart: addCart,
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         callback: [callback, setCallback],
         history: [history, setHistory],
         infor: [infor, setInfor],
-        cart: [cart, setCart]
-    }
+        cart: [cart, setCart],
+    };
 }

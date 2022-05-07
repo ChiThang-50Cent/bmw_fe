@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalState } from "../../../GlobalState";
 
 export default function EditProfile({ infor }) {
-  const saveProfile = () => {};
+  const state = useContext(GlobalState);
+  const updateInfo = state.userAPI.updateInfo;
+  const saveProfile = () => {
+    const input = document.querySelectorAll("#edit_ input");
+    const data = {
+      name: input[0].value || infor[0],
+      phone: input[1].value || infor[1],
+      address: input[2].value || infor[2],
+    };
+    updateInfo(data);
+  };
   return (
     <div className="col-md-5 border-right">
       <div className="p-3 py-5">
