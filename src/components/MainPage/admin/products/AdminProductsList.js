@@ -41,6 +41,8 @@ export default function AdminProductsList() {
   const history = useHistory();
   const params = useParams();
 
+  const getCSToken = state.userAPI.getCSToken;
+
   useEffect(() => {
     setPage(5);
   }, [page, setPage]);
@@ -118,13 +120,13 @@ export default function AdminProductsList() {
     try {
       if (!isAdmin) return Swal.fire("You're not an admin");
       if (!images) return Swal.fire("No images upload");
-
+      const _token = await getCSToken();
       if (onEdit) {
         await axios.put(
           `/api/products/${product._id}`,
           { ...product, images },
           {
-            headers: { Authorization: token },
+            headers: { Authorization: token, _token },
           }
         );
       } else {
@@ -132,7 +134,7 @@ export default function AdminProductsList() {
           `/api/products`,
           { ...product, images },
           {
-            headers: { Authorization: token },
+            headers: { Authorization: token, _token },
           }
         );
       }
@@ -145,6 +147,8 @@ export default function AdminProductsList() {
 
   const deleteProduct = async (id, public_id) => {
     try {
+      const _token = await getCSToken();
+
       setLoading(true);
       const destroyImg = axios.post(
         `/api/destroy`,
@@ -154,7 +158,7 @@ export default function AdminProductsList() {
         }
       );
       const deleteProduct = axios.delete(`/api/products/${id}`, {
-        headers: { Authorization: token },
+        headers: { Authorization: token, _token },
       });
       await destroyImg;
       await deleteProduct;

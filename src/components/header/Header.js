@@ -17,6 +17,7 @@ export default function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(handleSearch);
     setSearch(handleSearch);
     setHandleSearch("");
     history.push("/products");

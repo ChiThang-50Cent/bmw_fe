@@ -87,13 +87,15 @@ export default function UserAPI(token) {
             Swal.fire("Fail!", "Please login to be able to shop", "error");
         }
         setInfor([name, phone, address]);
+
+        const _token = await getCSToken();
+
         try {
-            const doc = await axios.post(
+            await axios.post(
                 "http://localhost:5000/user/update", {...data }, {
-                    headers: { Authorization: token },
+                    headers: { Authorization: token, _token },
                 }
             );
-            console.log(doc);
             Swal.fire("Thank you!", "Update infor success!", "success");
         } catch (err) {
             Swal.fire({
@@ -105,7 +107,19 @@ export default function UserAPI(token) {
         }
     };
 
+    const getCSToken = async() => {
+        try {
+            const tk = await axios.get("http://localhost:5000/user/cs_", {
+                headers: { Authorization: token },
+            });
+            return tk.headers._token;
+        } catch (err) {
+            return null;
+        }
+    };
+
     return {
+        getCSToken,
         updateInfo: updateInfo,
         addCart: addCart,
         isLogged: [isLogged, setIsLogged],
