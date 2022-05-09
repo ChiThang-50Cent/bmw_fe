@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a0bcd5dd.chunk.css",
+    "main.js": "/static/js/main.b8f899b4.chunk.js",
+    "runtime-main.js": "/static/js/runtime-main.03887cff.js",
+    "static/css/2.d316d967.chunk.css": "/static/css/2.d316d967.chunk.css",
+    "static/js/2.b2b7ae2e.chunk.js": "/static/js/2.b2b7ae2e.chunk.js",
+    "index.html": "/index.html",
+    "static/js/2.b2b7ae2e.chunk.js.LICENSE.txt": "/static/js/2.b2b7ae2e.chunk.js.LICENSE.txt",
+    "static/media/404 Seiten_Header.97857005.jpg": "/static/media/404 Seiten_Header.97857005.jpg",
+    "static/media/Spinner-1s-200px.c0a3ccc0.gif": "/static/media/Spinner-1s-200px.c0a3ccc0.gif",
+    "static/media/american-express.0877547a.png": "/static/media/american-express.0877547a.png",
+    "static/media/bambaska.795a7654.jpg": "/static/media/bambaska.795a7654.jpg",
+    "static/media/banner_pink.290aa34d.png": "/static/media/banner_pink.290aa34d.png",
+    "static/media/blog-2018-what-is-sfcc.a9acce28.jpg": "/static/media/blog-2018-what-is-sfcc.a9acce28.jpg",
+    "static/media/email__image.58cacc0e.png": "/static/media/email__image.58cacc0e.png",
+    "static/media/flash_sale.c33e0976.jpg": "/static/media/flash_sale.c33e0976.jpg",
+    "static/media/master-card.17ccf15b.png": "/static/media/master-card.17ccf15b.png",
+    "static/media/moda.1e7f8d08.jpg": "/static/media/moda.1e7f8d08.jpg",
+    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.03887cff.js",
+    "static/css/2.d316d967.chunk.css",
+    "static/js/2.b2b7ae2e.chunk.js",
+    "static/css/main.a0bcd5dd.chunk.css",
+    "static/js/main.b8f899b4.chunk.js"
+  ]
+}
