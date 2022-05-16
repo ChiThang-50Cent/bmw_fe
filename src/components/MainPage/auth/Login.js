@@ -33,8 +33,9 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("api/user/login", { ...user });
+      const res = await axios.post("api/user/login", { ...user });
       localStorage.setItem("Login", true);
+      document.cookie = `refreshtoken=${res.refreshtoken}`;
       window.location.href = "/";
     } catch (err) {
       Swal.fire({
