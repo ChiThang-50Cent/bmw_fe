@@ -23,7 +23,7 @@ export default function Header() {
   };
 
   const logoutUser = async () => {
-    await axios.get(`http://localhost:5000/user/logout`);
+    await axios.get(process.env.API_URL + `user/logout`);
     localStorage.removeItem("Login");
     window.location.href = "/";
   };
