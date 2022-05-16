@@ -28,7 +28,7 @@ export default function Register() {
   const registerSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(process.env.API_URL + "user/register", { ...user });
+      await axios.post("api/user/register", { ...user });
       localStorage.setItem("Login", true);
       window.location.href = "/";
     } catch (err) {

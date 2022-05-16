@@ -13,9 +13,7 @@ export const DataProvider = ({ children }) => {
     const login = localStorage.getItem("Login");
     if (login) {
       const refreshToken = async () => {
-        const response = await axios.get(
-          process.env.API_URL + "/user/refresh_token"
-        );
+        const response = await axios.get("api/user/refresh_token");
         setToken(response.data.accesstoken);
 
         setTimeout(() => {

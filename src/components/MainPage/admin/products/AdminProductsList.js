@@ -77,16 +77,12 @@ export default function AdminProductsList() {
       let formData = new FormData();
       formData.append("file", file);
       setLoading(true);
-      const response = await axios.post(
-        process.env.API_URL + `api/upload`,
-        formData,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: token,
-          },
-        }
-      );
+      const response = await axios.post(`api/api/upload`, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: token,
+        },
+      });
       setLoading(false);
       setImages(response.data);
       console.log(response.data);
@@ -106,7 +102,7 @@ export default function AdminProductsList() {
       if (!isAdmin) return Swal.fire("You're not an admin");
       setLoading(true);
       await axios.post(
-        process.env.API_URL + "api/destroy",
+        "api/api/destroy",
         { public_id: images.public_id },
         {
           Authorization: token,
@@ -127,7 +123,7 @@ export default function AdminProductsList() {
       const _token = await getCSToken();
       if (onEdit) {
         await axios.put(
-          process.env.API_URL + `api/products/${product._id}`,
+          `api/api/products/${product._id}`,
           { ...product, images },
           {
             headers: { Authorization: token, _token },
@@ -135,7 +131,7 @@ export default function AdminProductsList() {
         );
       } else {
         await axios.post(
-          process.env.API_URL + `api/products`,
+          `api/api/products`,
           { ...product, images },
           {
             headers: { Authorization: token, _token },
@@ -155,18 +151,15 @@ export default function AdminProductsList() {
 
       setLoading(true);
       const destroyImg = axios.post(
-        process.env.API_URL + `api/destroy`,
+        `api/api/destroy`,
         { public_id },
         {
           headers: { Authorization: token },
         }
       );
-      const deleteProduct = axios.delete(
-        process.env.API_URL + `api/products/${id}`,
-        {
-          headers: { Authorization: token, _token },
-        }
-      );
+      const deleteProduct = axios.delete(`api/api/products/${id}`, {
+        headers: { Authorization: token, _token },
+      });
       await destroyImg;
       await deleteProduct;
       setLoading(false);

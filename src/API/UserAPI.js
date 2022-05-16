@@ -14,7 +14,7 @@ export default function UserAPI(token) {
         if (token) {
             const getUser = async() => {
                 try {
-                    const response = await axios.get(process.env.API_URL + `user/infor`, {
+                    const response = await axios.get(`api/user/infor`, {
                         headers: { Authorization: token },
                     });
                     setIsLogged(true);
@@ -37,18 +37,14 @@ export default function UserAPI(token) {
         if (token) {
             const getHistory = async() => {
                 if (isAdmin) {
-                    const response = await axios.get(
-                        process.env.API_URL + `api/payment`, {
-                            headers: { Authorization: token },
-                        }
-                    );
+                    const response = await axios.get(`api/api/payment`, {
+                        headers: { Authorization: token },
+                    });
                     setHistory(response.data);
                 } else {
-                    const response = await axios.get(
-                        process.env.API_URL + `user/history`, {
-                            headers: { Authorization: token },
-                        }
-                    );
+                    const response = await axios.get(`api/user/history`, {
+                        headers: { Authorization: token },
+                    });
                     setHistory(response.data);
                 }
             };
@@ -67,7 +63,7 @@ export default function UserAPI(token) {
         if (check) {
             setCart([...cart, {...product, quantity: 1 }]);
             await axios.patch(
-                process.env.API_URL + "user/addcart", { cart: [...cart, {...product, quantity: 1 }] }, {
+                "api/user/addcart", { cart: [...cart, {...product, quantity: 1 }] }, {
                     headers: { Authorization: token },
                 }
             );
@@ -92,7 +88,7 @@ export default function UserAPI(token) {
 
         try {
             await axios.post(
-                process.env.API_URL + "user/update", {...data }, {
+                "api/user/update", {...data }, {
                     headers: { Authorization: token, _token },
                 }
             );
@@ -109,7 +105,7 @@ export default function UserAPI(token) {
 
     const getCSToken = async() => {
         try {
-            const tk = await axios.get(process.env.API_URL + "user/cs_", {
+            const tk = await axios.get("api/user/cs_", {
                 headers: { Authorization: token },
             });
             return tk.headers._token;
