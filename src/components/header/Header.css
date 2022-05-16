@@ -56,7 +56,6 @@ a {
 .navbar__list li a,
 .cart a {
     transition: 0.2s;
-    color: aliceblue!important;
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -95,6 +94,7 @@ a {
 
 .search__form {
     display: flex;
+    border: 1px solid black;
     max-height: 40px;
     width: 100%;
 }
@@ -141,7 +141,7 @@ a {
 }
 
 .header__icon {
-    color: antiquewhite;
+    color: rgb(24, 101, 189);
     font-size: 2.5rem;
 }
 
