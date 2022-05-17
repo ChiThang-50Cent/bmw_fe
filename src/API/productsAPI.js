@@ -13,7 +13,7 @@ export default function ProductsAPI() {
     useEffect(() => {
         const getProducts = async() => {
             let query = `?limit=${page * 9}&${category}&title=${search}`;
-            let link = process.env.API_URL + `api/products${query}`;
+            let link = `api/api/products${query}`;
             const response = await axios.get(link);
             setProducts(response.data.products);
             setResult(response.data.result);

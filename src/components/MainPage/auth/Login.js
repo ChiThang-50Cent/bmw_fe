@@ -31,7 +31,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(process.env.API_URL + "/user/login", { ...user });
+      await axios.post("api/user/login", { ...user });
       localStorage.setItem("Login", true);
       window.location.href = "/";
     } catch (err) {
