@@ -33,7 +33,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(apiUrl + "/api/user/login", { ...user });
-      document.cookie = `refreshtoken=${res.data.cookie}`;
+      document.cookie = `refreshtoken=${res.data.refreshtoken}`;
       localStorage.setItem("Login", true);
       window.location.href = "/";
     } catch (err) {
