@@ -32,16 +32,13 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(apiUrl + "/user/login", { ...user });
-
-      document.cookie = `refreshtoken=${res.refreshtoken}`;
-      console.log(res);
+	  await axios.post(apiUrl + "/api/user/login", { ...user });
       localStorage.setItem("Login", true);
-      //window.location.href = "/";
+      window.location.href = "/";
     } catch (err) {
       Swal.fire({
         title: "Error",
-        text: err.response.data.msg,
+        text: err.message,
         icon: "error",
         button: "OK",
       });
