@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import apiUrl from "../../../API/const.js";
 
 export default function ProductsAPI() {
     const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ export default function ProductsAPI() {
     useEffect(() => {
         const getProducts = async() => {
             let query = `?limit=${page * 9}&${category}&title=${search}`;
-            let link = `api/api/products${query}`;
+            let link = apiUrl + `api/api/products${query}`;
             const response = await axios.get(link);
             setProducts(response.data.products);
             setResult(response.data.result);

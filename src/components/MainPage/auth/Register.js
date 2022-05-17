@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import apiUrl from "../../../API/const.js";
 
 const theme = createTheme();
 
@@ -28,7 +29,7 @@ export default function Register() {
   const registerSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("api/user/register", { ...user });
+      await axios.post(apiUrl + "api/user/register", { ...user });
       localStorage.setItem("Login", true);
       window.location.href = "/";
     } catch (err) {
