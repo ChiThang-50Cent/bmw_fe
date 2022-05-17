@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import PaypalButton from "./PaypalButton";
 import Grid from "@mui/material/Grid";
-import apiUrl from "../../../API/const.js";
+import { url as apiUrl } from "../../../API/const.js";
 
 export default function Cart() {
   const state = useContext(GlobalState);

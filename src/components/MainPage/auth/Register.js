@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import apiUrl from "../../../API/const.js";
+import { url as apiUrl } from "../../../API/const.js";
 
 const theme = createTheme();
 
