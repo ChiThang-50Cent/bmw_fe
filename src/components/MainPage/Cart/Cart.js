@@ -36,7 +36,7 @@ export default function Cart() {
 
   const addToCart = async (cart) => {
     await axios.patch(
-      apiUrl + "/api/user/addcart",
+      apiUrl + "/user/addcart",
       { cart },
       {
         headers: { Authorization: token },
@@ -79,7 +79,7 @@ export default function Cart() {
   const tranSuccess = async (payment) => {
     const { paymentID, address } = payment;
     await axios.post(
-      apiUrl + `/api/api/payment`,
+      apiUrl + `/api/payment`,
       { cart, paymentID, address },
       {
         headers: { Authorization: token },

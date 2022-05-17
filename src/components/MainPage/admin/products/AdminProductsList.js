@@ -78,7 +78,7 @@ export default function AdminProductsList() {
       let formData = new FormData();
       formData.append("file", file);
       setLoading(true);
-      const response = await axios.post(`/api/api/upload`, formData, {
+      const response = await axios.post(`/api/upload`, formData, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: token,
@@ -103,7 +103,7 @@ export default function AdminProductsList() {
       if (!isAdmin) return Swal.fire("You're not an admin");
       setLoading(true);
       await axios.post(
-        apiUrl + "/api/api/destroy",
+        apiUrl + "/api/destroy",
         { public_id: images.public_id },
         {
           Authorization: token,
@@ -124,7 +124,7 @@ export default function AdminProductsList() {
       const _token = await getCSToken();
       if (onEdit) {
         await axios.put(
-          apiUrl + `/api/api/products/${product._id}`,
+          apiUrl + `/api/products/${product._id}`,
           { ...product, images },
           {
             headers: { Authorization: token, _token },
@@ -132,7 +132,7 @@ export default function AdminProductsList() {
         );
       } else {
         await axios.post(
-          apiUrl + `/api/api/products`,
+          apiUrl + `/api/products`,
           { ...product, images },
           {
             headers: { Authorization: token, _token },
@@ -152,13 +152,13 @@ export default function AdminProductsList() {
 
       setLoading(true);
       const destroyImg = axios.post(
-        apiUrl + `/api/api/destroy`,
+        apiUrl + `/api/destroy`,
         { public_id },
         {
           headers: { Authorization: token },
         }
       );
-      const deleteProduct = axios.delete(apiUrl + `/api/api/products/${id}`, {
+      const deleteProduct = axios.delete(apiUrl + `/api/products/${id}`, {
         headers: { Authorization: token, _token },
       });
       await destroyImg;

@@ -27,7 +27,7 @@ export default function Category() {
     try {
       if (edit) {
         const response = await axios.put(
-          apiUrl + `/api/api/category/${id}`,
+          apiUrl + `/api/category/${id}`,
           { name: category },
           {
             headers: { Authorization: token, _token },
@@ -36,7 +36,7 @@ export default function Category() {
         Swal.fire("Success!", response.data.msg, "success");
       } else {
         const response = await axios.post(
-          apiUrl + `/api/api/category`,
+          apiUrl + `/api/category`,
           { name: category },
           {
             headers: { Authorization: token, _token },
@@ -58,7 +58,7 @@ export default function Category() {
   };
   const deleteCategory = async (id) => {
     try {
-      const response = await axios.delete(apiUrl + `/api/api/category/${id}`, {
+      const response = await axios.delete(apiUrl + `/api/category/${id}`, {
         headers: { Authorization: token },
       });
       Swal.fire("Success!", response.data.msg);

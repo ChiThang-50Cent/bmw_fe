@@ -8,7 +8,7 @@ export default function CategoriesAPI() {
 
     useEffect(() => {
         const getCategories = async() => {
-            const response = await axios.get(apiUrl + `/api/api/category`);
+            const response = await axios.get(apiUrl + `/api/category`);
             setCategories(response.data);
         };
         getCategories();
