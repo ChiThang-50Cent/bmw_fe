@@ -2,12 +2,12 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 // import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 // import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -32,7 +32,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-	  await axios.post(apiUrl + "/api/user/login", { ...user });
+      const res = await axios.post(apiUrl + "/api/user/login", { ...user });
+      document.cookie = `refreshtoken=${res.data.cookie}`;
       localStorage.setItem("Login", true);
       window.location.href = "/";
     } catch (err) {
