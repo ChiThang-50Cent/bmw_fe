@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import apiUrl from "../../../API/const.js";
+import { url as apiUrl } from "../../../API/const.js";
 
 export default function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false);

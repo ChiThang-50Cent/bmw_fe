@@ -3,7 +3,7 @@ import ProductsAPI from "./API/productsAPI";
 import axios from "axios";
 import CategoriesAPI from "./API/CategoriesAPI";
 import UserAPI from "./API/UserAPI";
-import apiUrl from "../../../API/const.js";
+import { url as apiUrl } from "../../../API/const.js";
 
 export const GlobalState = createContext();
 
