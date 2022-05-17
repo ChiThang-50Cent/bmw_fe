@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { url as apiUrl } from "../../../API/const.js";
+import { url as apiUrl } from "../../../../API/const";
 
 export default function Category() {
   const state = React.useContext(GlobalState);

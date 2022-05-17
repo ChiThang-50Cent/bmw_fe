@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
-import { url as apiUrl } from "../../../API/const.js";
+import { url as apiUrl } from "../../API/const";
 
 export default function Header() {
   const state = useContext(GlobalState);

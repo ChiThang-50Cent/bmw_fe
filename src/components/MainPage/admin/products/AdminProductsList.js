@@ -14,7 +14,7 @@ import axios from "axios";
 import Loading from "../../support/Loading";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { url as apiUrl } from "../../../API/const.js";
+import { url as apiUrl } from "../../../../API/const";
 
 let initialState = {
   product_id: "",
