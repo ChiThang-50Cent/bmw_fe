@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { url as apiUrl } from "../../../API/const.js";
+import { url as apiUrl } from "./const";
 
 export default function CategoriesAPI() {
     const [categories, setCategories] = useState([]);
