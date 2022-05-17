@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import PaypalButton from "./PaypalButton";
 import Grid from "@mui/material/Grid";
+import apiUrl from "../../../API/const.js";
 
 export default function Cart() {
   const state = useContext(GlobalState);
@@ -35,7 +36,7 @@ export default function Cart() {
 
   const addToCart = async (cart) => {
     await axios.patch(
-      "api/user/addcart",
+      apiUrl + "api/user/addcart",
       { cart },
       {
         headers: { Authorization: token },
@@ -78,7 +79,7 @@ export default function Cart() {
   const tranSuccess = async (payment) => {
     const { paymentID, address } = payment;
     await axios.post(
-      `api/api/payment`,
+      apiUrl + `api/api/payment`,
       { cart, paymentID, address },
       {
         headers: { Authorization: token },

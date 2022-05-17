@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
+import apiUrl from "../../../API/const.js";
 
 export default function Header() {
   const state = useContext(GlobalState);
@@ -23,7 +24,7 @@ export default function Header() {
   };
 
   const logoutUser = async () => {
-    await axios.get(`api/user/logout`);
+    await axios.get(apiUrl + `api/user/logout`);
     localStorage.removeItem("Login");
     window.location.href = "/";
   };

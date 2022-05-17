@@ -14,6 +14,7 @@ import axios from "axios";
 import Loading from "../../support/Loading";
 import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
+import apiUrl from "../../../API/const.js";
 
 let initialState = {
   product_id: "",
@@ -102,7 +103,7 @@ export default function AdminProductsList() {
       if (!isAdmin) return Swal.fire("You're not an admin");
       setLoading(true);
       await axios.post(
-        "api/api/destroy",
+        apiUrl + "api/api/destroy",
         { public_id: images.public_id },
         {
           Authorization: token,
@@ -123,7 +124,7 @@ export default function AdminProductsList() {
       const _token = await getCSToken();
       if (onEdit) {
         await axios.put(
-          `api/api/products/${product._id}`,
+          apiUrl + `api/api/products/${product._id}`,
           { ...product, images },
           {
             headers: { Authorization: token, _token },
@@ -131,7 +132,7 @@ export default function AdminProductsList() {
         );
       } else {
         await axios.post(
-          `api/api/products`,
+          apiUrl + `api/api/products`,
           { ...product, images },
           {
             headers: { Authorization: token, _token },
@@ -151,13 +152,13 @@ export default function AdminProductsList() {
 
       setLoading(true);
       const destroyImg = axios.post(
-        `api/api/destroy`,
+        apiUrl + `api/api/destroy`,
         { public_id },
         {
           headers: { Authorization: token },
         }
       );
-      const deleteProduct = axios.delete(`api/api/products/${id}`, {
+      const deleteProduct = axios.delete(apiUrl + `api/api/products/${id}`, {
         headers: { Authorization: token, _token },
       });
       await destroyImg;

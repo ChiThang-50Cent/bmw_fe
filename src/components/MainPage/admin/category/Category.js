@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
+import apiUrl from "../../../API/const.js";
 
 export default function Category() {
   const state = React.useContext(GlobalState);
@@ -26,7 +27,7 @@ export default function Category() {
     try {
       if (edit) {
         const response = await axios.put(
-          `api/api/category/${id}`,
+          apiUrl + `api/api/category/${id}`,
           { name: category },
           {
             headers: { Authorization: token, _token },
@@ -35,7 +36,7 @@ export default function Category() {
         Swal.fire("Success!", response.data.msg, "success");
       } else {
         const response = await axios.post(
-          `api/api/category`,
+          apiUrl + `api/api/category`,
           { name: category },
           {
             headers: { Authorization: token, _token },
@@ -57,7 +58,7 @@ export default function Category() {
   };
   const deleteCategory = async (id) => {
     try {
-      const response = await axios.delete(`api/api/category/${id}`, {
+      const response = await axios.delete(apiUrl + `api/api/category/${id}`, {
         headers: { Authorization: token },
       });
       Swal.fire("Success!", response.data.msg);
