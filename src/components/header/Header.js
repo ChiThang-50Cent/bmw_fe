@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
-import Logo from "./images/logo.jpg";
 
 export default function Header() {
   const state = useContext(GlobalState);
@@ -37,7 +36,7 @@ export default function Header() {
         <div className="header__top--container">
           <div className="logo__top">
             <Link to="/" onClick={() => setCategory("")}>
-              <img src={Logo} alt="" className="logo__image" />
+              <img src="logo192.png" alt="" className="logo__image" />
             </Link>
           </div>
           <div className="languages"></div>
@@ -111,7 +110,7 @@ export default function Header() {
         <div className="header__bottom--container">
           <div className="logo__bottom">
             <Link to="/" onClick={() => setCategory("")}>
-              <img src={Logo} alt="" className="logo__image" />
+              <img src="logo192.png" alt="" className="logo__image" />
             </Link>
           </div>
           <div className="heart__icon">

@@ -32,13 +32,7 @@ export default function Products() {
             {result.length > 0 ? (
               ""
             ) : (
-              <Button
-                variant="contained"
-                color="success"
-                onClick={() => setPage(page + 1)}
-              >
-                See more
-              </Button>
+              <Button onClick={() => setPage(page + 1)}>See more</Button>
             )}
           </div>
         </div>
