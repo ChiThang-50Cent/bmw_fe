@@ -12,7 +12,6 @@ export default function ProductHome() {
   const [result] = state.productsAPI.result;
   const [page, setPage] = state.productsAPI.page;
   // if(products.length ===0) return null
-  console.log(products);
   return (
     <div className="main">
       <div className="container">

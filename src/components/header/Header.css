@@ -29,6 +29,14 @@ a {
     border-bottom: 1px solid rgb(208, 208, 208);
 }
 
+.header__bottom--container > a {
+	color : rgb(8, 206, 251);
+}
+
+.header__bottom--container > a:hover {
+	color : rgb(24, 101, 189);
+}
+
 .logo__top {
     display: none;
 }

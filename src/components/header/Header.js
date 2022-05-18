@@ -24,7 +24,8 @@ export default function Header() {
   };
 
   const logoutUser = async () => {
-    await axios.get(apiUrl + `/api/user/logout`);
+    //const res = await axios.get(apiUrl + `/api/user/logout`);
+	document.cookie = `refreshtoken=`;
     localStorage.removeItem("Login");
     window.location.href = "/";
   };
