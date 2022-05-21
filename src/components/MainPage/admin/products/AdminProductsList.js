@@ -125,17 +125,17 @@ export default function AdminProductsList() {
       if (onEdit) {
         await axios.put(
           apiUrl + `/api/products/${product._id}`,
-          { ...product, images },
+          { ...product, images, _token },
           {
-            headers: { Authorization: token, _token },
+            headers: { Authorization: token },
           }
         );
       } else {
         await axios.post(
           apiUrl + `/api/products`,
-          { ...product, images },
+          { ...product, images, _token },
           {
-            headers: { Authorization: token, _token },
+            headers: { Authorization: token },
           }
         );
       }
@@ -148,7 +148,6 @@ export default function AdminProductsList() {
 
   const deleteProduct = async (id, public_id) => {
     try {
-      const _token = await getCSToken();
 
       setLoading(true);
       const destroyImg = axios.post(
@@ -159,7 +158,7 @@ export default function AdminProductsList() {
         }
       );
       const deleteProduct = axios.delete(apiUrl + `/api/products/${id}`, {
-        headers: { Authorization: token, _token },
+        headers: { Authorization: token},
       });
       await destroyImg;
       await deleteProduct;

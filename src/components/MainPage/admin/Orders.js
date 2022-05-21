@@ -25,12 +25,12 @@ export default function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {history.map((item) => (
+          {/* Array.from(history || []).map((item) => (
             <TableRow key={item._id}>
               <TableCell className="order__item">{item.updatedAt}</TableCell>
               <TableCell className="order__item">{item.name}</TableCell>
               <TableCell className="order__item">{item.paymentID}</TableCell>
-              <TableCell className="order__item">{item.cart.map((cartItem, index) => {
+              <TableCell className="order__item">{Array.from(item.cart || []).map((cartItem, index) => {
                 return (
                   <div key={index} className="flexrow">
                     <img src={cartItem.images.url} alt="" className="order__image"/>
@@ -38,12 +38,11 @@ export default function Orders() {
                   </div>
                 )
               })}</TableCell>
-              <TableCell className="order__item" align="right">${item.cart.reduce((prev, cartItem) => (
+              <TableCell className="order__item" align="right">${Array.from(item.cart || []).reduce((prev, cartItem) => (
                      prev + (cartItem.quantity * cartItem.price)
               ), 0)}</TableCell>
             </TableRow>
-          ))}
-          
+          )) */}
         </TableBody>
       </Table>
     </React.Fragment>

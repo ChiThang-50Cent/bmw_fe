@@ -109,8 +109,8 @@ function Admin() {
                       <h2>Total Products Sold</h2>
                       <p className="overview__number">
                         {
-                          history.reduce((prev, item) => prev + (
-                            item.cart.reduce((prevItem, product) => (
+                          Array.from(history).reduce((prev, item) => prev + (
+                            Array.from(item.cart || []).reduce((prevItem, product) => (
                               prevItem + (product.sold)
                             ), 0)
                           ), 0)
@@ -135,9 +135,9 @@ function Admin() {
                   <h2>Total Revenue</h2>
                   <p className="overview__number">
                    $ {
-                        history.reduce((prev, item) => (
+                        Array.from(history).reduce((prev, item) => (
                           prev + (
-                            item.cart.reduce((prevItem, product) => (
+                            Array.from(item.cart || []).reduce((prevItem, product) => (
                               prevItem + (product.quantity * product.price)
                             ), 0)
                           )

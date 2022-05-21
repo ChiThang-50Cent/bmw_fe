@@ -28,18 +28,18 @@ export default function Category() {
       if (edit) {
         const response = await axios.put(
           apiUrl + `/api/category/${id}`,
-          { name: category },
+          { name: category, _token },
           {
-            headers: { Authorization: token, _token },
+            headers: { Authorization: token},
           }
         );
         Swal.fire("Success!", response.data.msg, "success");
       } else {
         const response = await axios.post(
           apiUrl + `/api/category`,
-          { name: category },
+          { name: category , _token },
           {
-            headers: { Authorization: token, _token },
+            headers: { Authorization: token},
           }
         );
         Swal.fire("Success!", response.data.msg, "success");

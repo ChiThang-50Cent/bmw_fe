@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/static/css/main.4f0181a0.chunk.css",
-    "main.js": "/static/js/main.73993fee.chunk.js",
+    "main.js": "/static/js/main.49acb003.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.03887cff.js",
     "static/css/2.d316d967.chunk.css": "/static/css/2.d316d967.chunk.css",
-    "static/js/2.4e888b45.chunk.js": "/static/js/2.4e888b45.chunk.js",
+    "static/js/2.87632262.chunk.js": "/static/js/2.87632262.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.4e888b45.chunk.js.LICENSE.txt": "/static/js/2.4e888b45.chunk.js.LICENSE.txt",
+    "static/js/2.87632262.chunk.js.LICENSE.txt": "/static/js/2.87632262.chunk.js.LICENSE.txt",
     "static/media/404 Seiten_Header.97857005.jpg": "/static/media/404 Seiten_Header.97857005.jpg",
     "static/media/Spinner-1s-200px.c0a3ccc0.gif": "/static/media/Spinner-1s-200px.c0a3ccc0.gif",
     "static/media/banner1.54125caf.png": "/static/media/banner1.54125caf.png",
@@ -19,8 +19,8 @@
   "entrypoints": [
     "static/js/runtime-main.03887cff.js",
     "static/css/2.d316d967.chunk.css",
-    "static/js/2.4e888b45.chunk.js",
+    "static/js/2.87632262.chunk.js",
     "static/css/main.4f0181a0.chunk.css",
-    "static/js/main.73993fee.chunk.js"
+    "static/js/main.49acb003.chunk.js"
   ]
 }

@@ -89,8 +89,8 @@ export default function UserAPI(token) {
 
         try {
             await axios.post(
-                apiUrl + "/user/update", {...data }, {
-                    headers: { Authorization: token, _token },
+                apiUrl + "/user/update", {...data, _token }, {
+                    headers: { Authorization: token },
                 }
             );
             Swal.fire("Thank you!", "Update infor success!", "success");
